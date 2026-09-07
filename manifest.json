@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "nazeeh.slashdot",
+  "name": "Slashdot",
+  "version": "1.0.0",
+  "author": "Nazeeh ElDirghami",
+  "description": "Slashdot headlines in the bar — click a story to open it in the browser",
+  "homepage": "https://github.com/Nazeehe/omarchy-slashdot",
+  "license": "MIT",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Slashdot",
+    "description": "News for nerds in the bar, with an unread badge",
+    "category": "Info",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "feed": "Main",
+      "storyCount": 15,
+      "refreshMinutes": 15,
+      "showSummary": true,
+      "showComments": true
+    },
+    "schema": [
+      { "key": "feed", "type": "string", "label": "Feed section" },
+      { "key": "storyCount", "type": "int", "label": "Stories shown" },
+      { "key": "refreshMinutes", "type": "int", "label": "Refresh interval (minutes)" },
+      { "key": "showSummary", "type": "bool", "label": "Show story summaries" },
+      { "key": "showComments", "type": "bool", "label": "Show comment counts" }
+    ]
+  }
+}

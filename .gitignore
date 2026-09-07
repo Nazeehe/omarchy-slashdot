@@ -1,0 +1,6 @@
+*.bak
+*.bak.*
+*.orig
+*.qmlc
+*.jsc
+.DS_Store

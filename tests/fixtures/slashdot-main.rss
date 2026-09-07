@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rdf:RDF
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns="http://purl.org/rss/1.0/"
+ xmlns:admin="http://webns.net/mvcb/"
+ xmlns:content="http://purl.org/rss/1.0/modules/content/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+ xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+ xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/"
+>
+
+<channel rdf:about="https://slashdot.org/">
+<title>Slashdot</title>
+<link>https://slashdot.org/</link>
+<description>News for nerds, stuff that matters</description>
+<dc:language>en-us</dc:language>
+<dc:rights>Copyright Slashdot Media. All Rights Reserved.</dc:rights>
+<dc:date>2026-09-07T15:37:30+00:00</dc:date>
+<dc:publisher>Slashdot Media</dc:publisher>
+<dc:creator>feedback@slashdot.org</dc:creator>
+<dc:subject>Technology</dc:subject>
+<syn:updateBase>1970-01-01T00:00+00:00</syn:updateBase>
+<syn:updateFrequency>1</syn:updateFrequency>
+<syn:updatePeriod>hourly</syn:updatePeriod>
+<items>
+ <rdf:Seq>
+  <rdf:li rdf:resource="https://science.slashdot.org/story/26/09/07/0036234/she-lost-her-sight-her-billionaire-father-bet-on-a-daring-new-treatment?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://slashdot.org/story/26/09/06/214258/the-jobs-apocalypse-is-postponed-an-ai-jobs-boom-is-here?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://yro.slashdot.org/story/26/09/07/0727220/bitcoin-based-liquid-network-says-320-million-withdrawn-in-hack?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://entertainment.slashdot.org/story/26/09/06/0633216/rokus-247-ai-slop-channel-is-even-worse-than-expected?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://yro.slashdot.org/story/26/09/06/0553230/us-military-disables-ad-trackers-on-devices-to-protect-troops?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://hardware.slashdot.org/story/26/09/05/2253221/where-a-massive-solar-storm-could-take-down-the-us-power-grid-for-millions?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://entertainment.slashdot.org/story/26/09/06/0347252/tivo-will-start-charging-fees-for-its-automatic-commercial-break-skipping-feature-skipmode?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://yro.slashdot.org/story/26/09/05/0659243/flock-offered-webinar-teaching-cops-how-to-surveil-no-kings-protesters?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://yro.slashdot.org/story/26/09/06/0017242/un-votes-to-encourage-map-projections-more-accurately-reflecting-the-true-size-of-continents?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://science.slashdot.org/story/26/09/06/0446242/private-german-rocket-makes-history-reaches-orbit-from-european-soil?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://news.slashdot.org/story/26/09/06/0316245/2026-hugo-award-winners-include-ursula-le-guin-authored-graphic-novel?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://games.slashdot.org/story/26/09/06/0123212/to-promote-grand-theft-auto-6-mayor-might-transform-miami-into-vice-city?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://politics.slashdot.org/story/26/09/05/223250/how-us-campaigns-are-already-using-ai-to-try-to-sway-voters?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://news.slashdot.org/story/26/09/05/0452205/fsf-is-now-on-bluesky---but-wont-advocate-signing-up-due-to-nonfree-javascript?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+  <rdf:li rdf:resource="https://slashdot.org/story/26/09/05/0548237/the-world-now-has-more-seniors-than-young-people---for-the-first-time-in-history?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed" />
+ </rdf:Seq>
+</items>
+<image rdf:resource="https://a.fsdn.com/sd/topics/topicslashdot.gif" />
+<textinput rdf:resource="https://slashdot.org/search.pl" />
+</channel>
+<image rdf:about="https://a.fsdn.com/sd/topics/topicslashdot.gif">
+<title>Slashdot</title>
+<url>https://a.fsdn.com/sd/topics/topicslashdot.gif</url>
+<link>https://slashdot.org/</link>
+</image>
+<item rdf:about="https://science.slashdot.org/story/26/09/07/0036234/she-lost-her-sight-her-billionaire-father-bet-on-a-daring-new-treatment?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+<title>'She Lost Her Sight. Her Billionaire Father Bet On a Daring New Treatment.'</title>
+<link>https://science.slashdot.org/story/26/09/07/0036234/she-lost-her-sight-her-billionaire-father-bet-on-a-daring-new-treatment?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+<description>"Billionaire Bill Ackman's life was upended this February when his 26-year-old daughter collapsed in her Brooklyn apartment, suffering a brain hemorrhage that would render her unable to move, speak or see," writes the Wa</description>
+<dc:creator>EditorDavid</dc:creator>
+<dc:date>2026-09-07T14:34:00+00:00</dc:date>
+<dc:subject>biotech</dc:subject>
+<slash:department>not-giving-up</slash:department>
+<slash:section>science</slash:section>
+<slash:comments>15</slash:comments>
+<slash:hit_parade>15,15,10,10,0,0,0</slash:hit_parade>
+</item>
+<item rdf:about="https://slashdot.org/story/26/09/06/214258/the-jobs-apocalypse-is-postponed-an-ai-jobs-boom-is-here?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+<title>'The Jobs Apocalypse Is Postponed.  An AI Jobs Boom Is Here'</title>
+<link>https://slashdot.org/story/26/09/06/214258/the-jobs-apocalypse-is-postponed-an-ai-jobs-boom-is-here?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+<description>A new article about AI in The Economist argues that "Initial effects of the technology on employment look positive."
+
+Perhaps AI will eventually make many humans unemployable &amp;mdash; but there is no sign of it yet. O</description>
+<dc:creator>EditorDavid</dc:creator>
+<dc:date>2026-09-07T11:34:00+00:00</dc:date>
+<dc:subject>ai</dc:subject>
+<slash:department>happy-Labor-Day</slash:department>
+<slash:section>slashdot</slash:section>
+<slash:comments>31</slash:comments>
+<slash:hit_parade>31,29,25,23,5,3,1</slash:hit_parade>
+</item>
+<item rdf:about="https://yro.slashdot.org/story/26/09/07/0727220/bitcoin-based-liquid-network-says-320-million-withdrawn-in-hack?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed">
+<title>Bitcoin-based Liquid Network Says $320 Million Withdrawn in Hack</title>
+<link>https://yro.slashdot.org/story/26/09/07/0727220/bitcoin-based-liquid-network-says-320-million-withdrawn-in-hack?utm_source=rss1.0mainlinkanon&amp;utm_medium=feed</link>
+<description>Reuters reports:
+
+
+Liquid Network, a Bitcoin-based payments and settlement network, said on Sunday that about $320 million was withdrawn from its federation wallet in a hack.
+"Purported white-hat hackers" withdrew around</description>
+<dc:creator>EditorDavid</dc:creator>
+<dc:date>2026-09-07T07:30:00+00:00</dc:date>
+<dc:subject>bitcoin</dc:subject>
+<slash:department>magic-internet-money</slash:department>
+<slash:section>yro</slash:section>
+<slash:comments>22</slash:comments>
+<slash:hit_parade>22,22,18,16,2,1,0</slash:hit_parade>
+</item>
+</rdf:RDF>
