@@ -331,6 +331,24 @@ function unreadCount(items, lastSeen) {
   return count
 }
 
+// A fetch on a warm connection finishes in well under 200ms — faster than a
+// spinner can be read as anything but a flicker. So the refresh indicator
+// runs until the fetch is done *and* a minimum spin has elapsed, whichever
+// lands last.
+function spinnerDone(loading, minElapsed) {
+  return loading === false && minElapsed === true
+}
+
+// The panel footer. A refresh in progress outranks everything else, so a
+// retry after a failure reads as a retry rather than as the stale failure.
+function statusLabel(spinning, loadError, lastFetch, nowMs) {
+  if (spinning) return "REFRESHING…"
+  if (loadError) return String(loadError).toUpperCase()
+  if (!lastFetch) return ""
+  var age = relativeTime(lastFetch, nowMs)
+  return age === "now" ? "UPDATED JUST NOW" : "UPDATED " + age + " AGO"
+}
+
 // The bar pill: Slashdot's own "/." mark, plus an unread badge when there
 // are stories newer than the last time the panel was opened.
 function barLabel(unread) {
@@ -346,6 +364,7 @@ if (typeof module !== "undefined") {
     decodeEntities: decodeEntities, stripHtml: stripHtml, cleanLink: cleanLink,
     snippet: snippet, parseFeed: parseFeed, relativeTime: relativeTime,
     unreadCount: unreadCount, newestTimestamp: newestTimestamp, barLabel: barLabel,
-    seenUpdate: seenUpdate, endVisitUpdate: endVisitUpdate
+    seenUpdate: seenUpdate, endVisitUpdate: endVisitUpdate,
+    spinnerDone: spinnerDone, statusLabel: statusLabel
   }
 }

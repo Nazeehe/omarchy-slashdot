@@ -44,6 +44,10 @@ Panel {
 
   property var items: []
   property bool loading: false
+  // Drives the spinning refresh glyph. Distinct from `loading` so a fetch
+  // that returns in 150ms still shows up as a visible spin rather than a
+  // flicker — see minSpin below.
+  property bool spinning: false
   property string loadError: ""
   property double lastFetch: 0
   property double now: Date.now()
@@ -174,8 +178,18 @@ Panel {
   function refresh() {
     if (feedProc.running) return
     loading = true
+    spinning = true
+    minSpin.restart()
     feedProc.command = ["bash", "-lc", root.fetchScript, "bash", Model.feedUrl(resolved.feed)]
     feedProc.running = true
+  }
+
+  // Both the fetch finishing and this timer call settleSpinner; whichever
+  // arrives last is the one that actually stops the spin.
+  Timer { id: minSpin; interval: 650; onTriggered: root.settleSpinner() }
+
+  function settleSpinner() {
+    if (Model.spinnerDone(loading, !minSpin.running)) spinning = false
   }
 
   Process {
@@ -184,6 +198,7 @@ Panel {
       waitForEnd: true
       onStreamFinished: {
         root.loading = false
+        root.settleSpinner()
         var parsed = Model.parseFeed(text)
         if (parsed.length > 0) {
           root.items = parsed
@@ -299,13 +314,7 @@ Panel {
   readonly property color accent: Color.accent
   readonly property color dim: Qt.darker(fg, 1.5)
 
-  readonly property string statusText: {
-    if (loadError !== "") return loadError.toUpperCase()
-    if (loading && items.length === 0) return "LOADING…"
-    if (lastFetch === 0) return ""
-    var age = Model.relativeTime(lastFetch, now)
-    return age === "now" ? "UPDATED JUST NOW" : ("UPDATED " + age + " AGO")
-  }
+  readonly property string statusText: Model.statusLabel(spinning, loadError, lastFetch, now)
 
   KeyboardPanel {
     id: panel
@@ -383,12 +392,47 @@ Panel {
             anchors.verticalCenter: parent.verticalCenter
             spacing: Style.space(2)
 
-            PanelActionButton {
-              iconText: "\uf021"
-              foreground: root.fg
-              tooltipText: "Refresh"
-              hasCursor: false
-              onClicked: root.refresh()
+            // Refresh, with the glyph spinning while a fetch is in flight.
+            // PanelActionButton owns its icon and can't rotate it, so the
+            // button carries the hover chrome and click target while the
+            // glyph is drawn over it. The overlay accepts no input, so
+            // clicks fall straight through to the button's MouseArea. Its
+            // hoverColor defaults to `foreground`, so one color is correct
+            // hovered or not.
+            Item {
+              implicitWidth: refreshButton.implicitWidth
+              implicitHeight: refreshButton.implicitHeight
+
+              PanelActionButton {
+                id: refreshButton
+                anchors.centerIn: parent
+                iconText: ""
+                foreground: root.fg
+                tooltipText: root.spinning ? "Refreshing\u2026" : "Refresh"
+                hasCursor: false
+                onClicked: root.refresh()
+              }
+
+              Text {
+                id: refreshGlyph
+                anchors.centerIn: parent
+                text: "\uf021"
+                color: root.fg
+                font.family: root.ff
+                font.pixelSize: Style.font.icon
+                transformOrigin: Item.Center
+
+                RotationAnimation on rotation {
+                  from: 0
+                  to: 360
+                  duration: 900
+                  loops: Animation.Infinite
+                  running: root.spinning
+                  // Settle upright rather than freezing at whatever angle the
+                  // last loop was cut off at.
+                  onStopped: refreshGlyph.rotation = 0
+                }
+              }
             }
             PanelActionButton {
               iconText: "\uf013"
@@ -529,7 +573,7 @@ Panel {
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
             text: root.loadError !== "" ? root.loadError
-                                        : (root.loading ? "Loading stories…" : "No stories yet")
+                                        : (root.spinning ? "Loading stories…" : "No stories yet")
             color: root.dim
             font.family: root.ff
             font.pixelSize: Style.font.body

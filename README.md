@@ -28,6 +28,11 @@ Stories newer than your previous visit are shown in bold with an accent rule
 down the left edge. They stay flagged for the whole visit, so opening the panel
 does not make them vanish out from under you; closing it retires the flags.
 
+While a fetch is in flight the refresh glyph spins and the footer reads
+`REFRESHING…`. A warm fetch finishes in well under 200ms, so the spin is held
+to a minimum duration — otherwise the feedback would land as a flicker and read
+as nothing having happened.
+
 ## Settings
 
 Right-click the pill (or press `s` in the popup):
@@ -95,7 +100,8 @@ node --test tests/model.test.mjs
 
 Covers feed URL building, the three feed dialects (against a captured slice of
 the real Slashdot feed), entity/HTML cleanup, tracking-parameter stripping,
-link scheme validation, relative times, and the multi-monitor visit bookkeeping.
+link scheme validation, relative times, the multi-monitor visit bookkeeping,
+and the refresh indicator's state rules.
 
 ## License
 

@@ -240,6 +240,30 @@ test("endVisit retires the banked mark, and is idempotent across panels", () => 
   assert.equal(M.endVisitUpdate(300, 300), null)
 })
 
+// ------------------------------------------------------------- refreshing
+
+test("the spinner stops only once the fetch is done AND the minimum has elapsed", () => {
+  assert.equal(M.spinnerDone(true, false), false)   // fetching, too early
+  assert.equal(M.spinnerDone(true, true), false)    // fetch outlasted the minimum
+  assert.equal(M.spinnerDone(false, false), false)  // fetch beat the minimum
+  assert.equal(M.spinnerDone(false, true), true)    // both satisfied
+})
+
+test("statusLabel reports refreshing above every other state", () => {
+  const now = Date.parse("2026-09-07T12:00:00Z")
+  assert.equal(M.statusLabel(true, "", 0, now), "REFRESHING…")
+  // A retry after a failure must read as a retry, not as the old failure.
+  assert.equal(M.statusLabel(true, "Couldn't load the feed", now, now), "REFRESHING…")
+})
+
+test("statusLabel otherwise reports the error, the age, or nothing", () => {
+  const now = Date.parse("2026-09-07T12:00:00Z")
+  assert.equal(M.statusLabel(false, "Couldn't load the feed", 0, now), "COULDN'T LOAD THE FEED")
+  assert.equal(M.statusLabel(false, "", 0, now), "")
+  assert.equal(M.statusLabel(false, "", now - 30 * 1000, now), "UPDATED JUST NOW")
+  assert.equal(M.statusLabel(false, "", now - 3 * 3600 * 1000, now), "UPDATED 3h AGO")
+})
+
 test("barLabel shows the slash-dot mark, with a count only when unread", () => {
   assert.equal(M.barLabel(0), "/.")
   assert.equal(M.barLabel(3), "/. 3")
